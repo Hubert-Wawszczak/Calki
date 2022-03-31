@@ -1,13 +1,13 @@
 import numpy as np
 class math():
     def __init__(self):
-        self.ModA = 3.0
-        self.ModB = 4.0
+        self.ModA = 1.0
+        self.ModB = 3.0
         self.ModC = 2.0
         self.ModD = 1.0
-        self.ValA = 3.0
-        self.ValB = 3.0
-        self.ValH = 2.0
+        self.ValA = 2.0
+        self.ValB = 4.0
+        self.ValH = 0.7
         
     def steps(self):
         tmp = []
@@ -41,7 +41,7 @@ class math():
     def MetodaSimsona(self):
         lSteps = self.steps()
         
-        if(lSteps % 2 != 1):
+        if(len(lSteps) % 2 != 1):
             return -1
         try:
             result = self.FX(lSteps[0]) + self.FX(lSteps[len(lSteps) - 1])
@@ -55,6 +55,7 @@ class math():
                 result = result + self.FX(lSteps[i]) * 4
             else:
                 result = result + self.FX(lSteps[i]) * 2
+            i=i+1
                 
         return self.ValH / 3.0 * result
     
